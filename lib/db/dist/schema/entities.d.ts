@@ -1,0 +1,121 @@
+import { z } from "zod/v4";
+export declare const entitiesTable: import("drizzle-orm/pg-core").PgTableWithColumns<{
+    name: "entities";
+    schema: undefined;
+    columns: {
+        id: import("drizzle-orm/pg-core").PgColumn<{
+            name: "id";
+            tableName: "entities";
+            dataType: "string";
+            columnType: "PgUUID";
+            data: string;
+            driverParam: string;
+            notNull: true;
+            hasDefault: true;
+            isPrimaryKey: true;
+            isAutoincrement: false;
+            hasRuntimeDefault: false;
+            enumValues: undefined;
+            baseColumn: never;
+            identity: undefined;
+            generated: undefined;
+        }, {}, {}>;
+        model: import("drizzle-orm/pg-core").PgColumn<{
+            name: "model";
+            tableName: "entities";
+            dataType: "string";
+            columnType: "PgText";
+            data: string;
+            driverParam: string;
+            notNull: true;
+            hasDefault: false;
+            isPrimaryKey: false;
+            isAutoincrement: false;
+            hasRuntimeDefault: false;
+            enumValues: [string, ...string[]];
+            baseColumn: never;
+            identity: undefined;
+            generated: undefined;
+        }, {}, {}>;
+        userId: import("drizzle-orm/pg-core").PgColumn<{
+            name: "user_id";
+            tableName: "entities";
+            dataType: "string";
+            columnType: "PgUUID";
+            data: string;
+            driverParam: string;
+            notNull: false;
+            hasDefault: false;
+            isPrimaryKey: false;
+            isAutoincrement: false;
+            hasRuntimeDefault: false;
+            enumValues: undefined;
+            baseColumn: never;
+            identity: undefined;
+            generated: undefined;
+        }, {}, {}>;
+        data: import("drizzle-orm/pg-core").PgColumn<{
+            name: "data";
+            tableName: "entities";
+            dataType: "json";
+            columnType: "PgJsonb";
+            data: unknown;
+            driverParam: unknown;
+            notNull: true;
+            hasDefault: true;
+            isPrimaryKey: false;
+            isAutoincrement: false;
+            hasRuntimeDefault: false;
+            enumValues: undefined;
+            baseColumn: never;
+            identity: undefined;
+            generated: undefined;
+        }, {}, {}>;
+        createdDate: import("drizzle-orm/pg-core").PgColumn<{
+            name: "created_date";
+            tableName: "entities";
+            dataType: "date";
+            columnType: "PgTimestamp";
+            data: Date;
+            driverParam: string;
+            notNull: true;
+            hasDefault: true;
+            isPrimaryKey: false;
+            isAutoincrement: false;
+            hasRuntimeDefault: false;
+            enumValues: undefined;
+            baseColumn: never;
+            identity: undefined;
+            generated: undefined;
+        }, {}, {}>;
+        updatedDate: import("drizzle-orm/pg-core").PgColumn<{
+            name: "updated_date";
+            tableName: "entities";
+            dataType: "date";
+            columnType: "PgTimestamp";
+            data: Date;
+            driverParam: string;
+            notNull: true;
+            hasDefault: true;
+            isPrimaryKey: false;
+            isAutoincrement: false;
+            hasRuntimeDefault: false;
+            enumValues: undefined;
+            baseColumn: never;
+            identity: undefined;
+            generated: undefined;
+        }, {}, {}>;
+    };
+    dialect: "pg";
+}>;
+export declare const insertEntitySchema: z.ZodObject<{
+    data: z.ZodOptional<z.ZodType<import("drizzle-zod").Json, unknown, z.core.$ZodTypeInternals<import("drizzle-zod").Json, unknown>>>;
+    model: z.ZodString;
+    userId: z.ZodOptional<z.ZodNullable<z.ZodUUID>>;
+}, {
+    out: {};
+    in: {};
+}>;
+export type InsertEntity = z.infer<typeof insertEntitySchema>;
+export type Entity = typeof entitiesTable.$inferSelect;
+//# sourceMappingURL=entities.d.ts.map

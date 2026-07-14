@@ -1,0 +1,1 @@
+function t(e){sessionStorage.setItem("glimr_voice_grant",e),sessionStorage.setItem("glimr_redirect_after_auth",`/chat/${e}`)}function r(){const e=sessionStorage.getItem("glimr_redirect_after_auth");return e?(sessionStorage.removeItem("glimr_redirect_after_auth"),e):"/"}export{r as c,t as s};

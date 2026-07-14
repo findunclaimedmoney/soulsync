@@ -1,0 +1,24 @@
+{
+  "name": "GLIMR — AI Companions That Remember You",
+  "short_name": "GLIMR",
+  "description": "Text, voice, and video AI companions that remember what matters to you and show up the way only someone who truly knows you can.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#c9a35d",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://media.base44.com/images/public/6a4ad4122d2c58f83324b2ce/d15eaf582_glimr_logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://media.base44.com/images/public/6a4ad4122d2c58f83324b2ce/d15eaf582_glimr_logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
