@@ -1,0 +1,27 @@
+kind = "video"
+previewPath = "/glimr-promo/"
+title = "GLIMR Promo Video"
+version = "1.0.0"
+id = "artifacts/glimr-promo"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/glimr-promo/" ]
+localPort = 18410
+
+[services.development]
+run = "pnpm --filter @workspace/glimr-promo run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/glimr-promo", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/glimr-promo/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "18410"
+BASE_PATH = "/glimr-promo/"

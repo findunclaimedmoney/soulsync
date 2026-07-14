@@ -1,0 +1,56 @@
+{
+  "name": "Memory",
+  "type": "object",
+  "properties": {
+    "companion_id": {
+      "type": "string",
+      "description": "Which companion this memory belongs to"
+    },
+    "key": {
+      "type": "string",
+      "description": "Short label for the memory (e.g. 'sister', 'job_stress', 'hometown', 'the_night_they_cried')"
+    },
+    "value": {
+      "type": "string",
+      "description": "What Mia/Zac remembers \u2014 be specific, nuanced, and emotionally textured, not generic. Include the felt quality of the moment, not just the fact."
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "fact",
+        "emotion",
+        "intimacy",
+        "moment",
+        "pattern",
+        "arc",
+        "sensory"
+      ],
+      "default": "fact",
+      "description": "What kind of memory this is: fact (concrete info), emotion (how they felt), intimacy (vulnerable/shared), moment (a specific exchange that mattered), pattern (recurring theme), arc (how something has changed over time), sensory (the texture of a moment)"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Optional description or notes"
+    }
+  },
+  "required": [
+    "companion_id",
+    "key",
+    "value"
+  ],
+  "rls": {
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

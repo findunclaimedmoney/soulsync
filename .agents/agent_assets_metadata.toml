@@ -1,0 +1,32 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "kHdu96OuLuxCMGJybTjL6"
+uri = "file://attached_assets/jess_face_crop.png"
+type = "image"
+title = "Jess — Face Crop"
+
+[[outputs]]
+id = "vs-5bQQ26UjX8R6ypFrEn"
+uri = "file://attached_assets/generated_videos/glimr-late-night.mp4"
+type = "video"
+title = "Late Night — Bedside Phone (9:16 Story/Reel)"
+
+[[outputs]]
+id = "Kp2AXo7T5_3uVmCDSPQJc"
+uri = "file://attached_assets/generated_videos/glimr-companion-moment.mp4"
+type = "video"
+title = "Companion Moment — Woman by Window (9:16 Story/Reel)"
+
+[[outputs]]
+id = "5fyiYJVSupXVgpKFzlLts"
+uri = "file://attached_assets/generated_videos/glimr-lifestyle-wide.mp4"
+type = "video"
+title = "Lifestyle Montage — Cosy Moments (16:9 Facebook/YouTube)"
+
+[[outputs]]
+id = "6H7rIDaNvNsJOx8kXRfEQ"
+uri = "file://attached_assets/generated_videos/glimr-connection-hope.mp4"
+type = "video"
+title = "Connection & Hope — Rooftop (9:16 Story/Reel)"

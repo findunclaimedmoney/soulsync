@@ -1,0 +1,108 @@
+{
+  "name": "CompanionConfig",
+  "type": "object",
+  "properties": {
+    "companion_id": {
+      "type": "string",
+      "description": "Unique slug ID used in URLs (e.g. 'monica' \u2192 /chat/monica)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Display name shown to users"
+    },
+    "tagline": {
+      "type": "string",
+      "description": "Short descriptor shown on cards (e.g. 'She captivates')"
+    },
+    "subtitle": {
+      "type": "string",
+      "description": "Longer subtitle shown under the name on landing pages"
+    },
+    "bio": {
+      "type": "string",
+      "description": "Full description of personality and what they offer"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "Profile photo URL (minimum 1920\u00d71080)"
+    },
+    "video_url": {
+      "type": "string",
+      "description": "15-second hero video for the landing page"
+    },
+    "accent": {
+      "type": "string",
+      "default": "from-amber-500/20 to-rose-500/10",
+      "description": "Tailwind gradient classes for accent color"
+    },
+    "personality": {
+      "type": "string",
+      "description": "Full system prompt / brain that defines how the companion behaves"
+    },
+    "voice_id": {
+      "type": "string",
+      "description": "ElevenLabs voice ID for voice replies"
+    },
+    "voice_name": {
+      "type": "string",
+      "description": "Display name of the selected voice"
+    },
+    "avatar_id": {
+      "type": "string",
+      "description": "HeyGen photo avatar ID for live video"
+    },
+    "avatar_status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "processing",
+        "active",
+        "failed"
+      ],
+      "default": "pending",
+      "description": "Avatar processing status: pending (not submitted), processing (up to 24hrs), active (ready), failed"
+    },
+    "stripe_price_id": {
+      "type": "string",
+      "description": "Stripe Price ID for the companion's recurring subscription"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "active",
+        "archived"
+      ],
+      "default": "draft",
+      "description": "draft = not live, active = chat-ready, archived = hidden"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Optional description or notes"
+    }
+  },
+  "required": [
+    "companion_id",
+    "name",
+    "personality"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {},
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

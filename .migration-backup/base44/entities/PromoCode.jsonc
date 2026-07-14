@@ -1,0 +1,76 @@
+{
+  "name": "PromoCode",
+  "type": "object",
+  "properties": {
+    "code": {
+      "type": "string",
+      "description": "The promo code string users enter (e.g. WELCOME50)"
+    },
+    "description": {
+      "type": "string",
+      "description": "Admin-facing note about what this code is for"
+    },
+    "credit_amount": {
+      "type": "number",
+      "default": 0,
+      "description": "Number of credits granted when this code is redeemed"
+    },
+    "max_uses": {
+      "type": "number",
+      "default": 0,
+      "description": "Maximum times this code can be redeemed (0 = unlimited)"
+    },
+    "used_count": {
+      "type": "number",
+      "default": 0,
+      "description": "How many times this code has been redeemed"
+    },
+    "expires_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this code expires (null = never)"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "active",
+        "disabled"
+      ],
+      "default": "active",
+      "description": "active = redeemable, disabled = turned off by admin"
+    },
+    "redeemed_user_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "User IDs who have already redeemed this code (prevents double redemption)"
+    }
+  },
+  "required": [
+    "code",
+    "credit_amount"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
+@import 'tailwindcss';
+
+:root {
+  --color-primary: #C9A96E;
+  --color-secondary: #8B7355;
+  --color-accent: #E5C78D;
+
+  --color-bg-light: #1A1A1A;
+  --color-bg-dark: #0A0A0A;
+  --color-bg-muted: #111111;
+
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #C9A96E;
+  --color-text-muted: #A0A0A0;
+  --color-text-inverse: #0A0A0A;
+
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Playfair Display', serif;
+}
+
+@theme inline {
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent: var(--color-accent);
+  --color-bg-light: var(--color-bg-light);
+  --color-bg-dark: var(--color-bg-dark);
+  --color-bg-muted: var(--color-bg-muted);
+  --color-text-primary: var(--color-text-primary);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-text-muted: var(--color-text-muted);
+  --color-text-inverse: var(--color-text-inverse);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
+body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-primary);
+}

@@ -1,0 +1,59 @@
+{
+  "description": "Every morning at 8am Perth time: sends a calm daily digest email with all signups, engagement stats, and 7-day trend \u2014 plus auto-follows-up users who signed up but haven't started chatting yet.",
+  "name": "Daily Signup Digest & Follow-up",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "scheduled",
+      "events": [],
+      "schedule_mode": "recurring",
+      "cron_expression": "0 8 * * *",
+      "one_time_date": null,
+      "timezone": "Australia/Perth",
+      "interval_value": null,
+      "interval_unit": null,
+      "interval_anchor": null,
+      "ends_type": "never",
+      "ends_on_date": null,
+      "ends_after_count": null
+    }
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "daily_signup_digest",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "send_digest": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "dailySignupSummary",
+            "args": {}
+          },
+          "then": "send_followups",
+          "x-base44": {
+            "title": "Send daily digest email",
+            "description": "One email with all signups and stats"
+          }
+        }
+      },
+      {
+        "send_followups": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "dailyFollowup",
+            "args": {}
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Follow up unengaged users",
+            "description": "Email signups who haven't chatted yet"
+          }
+        }
+      }
+    ]
+  }
+}

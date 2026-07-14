@@ -1,0 +1,45 @@
+{
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "weekly_marketing_report",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "generate_report": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "generateMarketingReport",
+            "args": {}
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Generate & email weekly report",
+            "description": "Facebook + Instagram + Meta Ads"
+          }
+        }
+      }
+    ]
+  },
+  "description": "Generates a weekly performance report across Facebook, Instagram, and Meta Ads, then emails it to all admins every Monday at 9am AWST.",
+  "trigger": {
+    "condition": null,
+    "config": {
+      "trigger_type": "scheduled",
+      "events": [],
+      "schedule_mode": "recurring",
+      "cron_expression": "0 9 * * 1",
+      "one_time_date": null,
+      "timezone": "Australia/Perth",
+      "interval_value": null,
+      "interval_unit": null,
+      "interval_anchor": null,
+      "ends_type": "never",
+      "ends_on_date": null,
+      "ends_after_count": null
+    }
+  },
+  "name": "Weekly Marketing Report"
+}

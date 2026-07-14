@@ -1,0 +1,23 @@
+kind = "mobile"
+previewPath = "/glimr-mobile/"
+title = "GLIMR Mobile"
+version = "1.0.0"
+id = "artifacts/glimr-mobile"
+router = "expo-domain"
+
+[[services]]
+name = "expo"
+ensurePreviewReachable = "/status"
+paths = [ "/glimr-mobile/" ]
+localPort = 22105
+
+[services.development]
+run = "pnpm --filter @workspace/glimr-mobile run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/glimr-mobile", "run", "build" ]
+run = [ "pnpm", "--filter", "@workspace/glimr-mobile", "run", "serve" ]
+
+[services.env]
+PORT = "22105"
+BASE_PATH = "/glimr-mobile/"

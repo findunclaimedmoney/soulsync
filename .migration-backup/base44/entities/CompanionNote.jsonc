@@ -1,0 +1,49 @@
+{
+  "name": "CompanionNote",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Short label for the note"
+    },
+    "content": {
+      "type": "string",
+      "description": "The full note text \u2014 personality traits, memories of loved ones, background, preferences, etc."
+    },
+    "note_type": {
+      "type": "string",
+      "enum": [
+        "personality",
+        "memory",
+        "loved_one",
+        "background",
+        "preference"
+      ],
+      "default": "personality",
+      "description": "What kind of note this is: personality (how the companion should act), memory (a memory to share), loved_one (info about someone important), background (life context), preference (likes/dislikes)"
+    },
+    "companion_id": {
+      "type": "string",
+      "description": "Which companion this note belongs to (or 'all' for global notes)"
+    }
+  },
+  "required": [
+    "title",
+    "content",
+    "companion_id"
+  ],
+  "rls": {
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

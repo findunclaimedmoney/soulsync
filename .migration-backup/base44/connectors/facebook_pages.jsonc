@@ -1,0 +1,11 @@
+{
+  "type": "facebook_pages",
+  "scopes": [
+    "pages_show_list",
+    "pages_read_engagement",
+    "pages_manage_posts",
+    "pages_manage_ads",
+    "read_insights",
+    "pages_messaging"
+  ]
+}

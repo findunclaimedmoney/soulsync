@@ -1,0 +1,116 @@
+{
+  "name": "TwinClone",
+  "type": "object",
+  "properties": {
+    "companion_id": {
+      "type": "string",
+      "description": "HumanCompanion record ID this twin belongs to"
+    },
+    "companion_name": {
+      "type": "string",
+      "description": "Display name of the companion (for admin reference)"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "Photo used to create the twin avatar"
+    },
+    "avatar_id": {
+      "type": "string",
+      "description": "LiveAvatar avatar ID once processing completes"
+    },
+    "avatar_status": {
+      "type": "string",
+      "enum": [
+        "processing",
+        "active",
+        "failed",
+        "expired"
+      ],
+      "default": "processing",
+      "description": "Status of the twin avatar: processing (being created), active (live), failed (error), expired (package ended)"
+    },
+    "package_months": {
+      "type": "number",
+      "description": "Duration of the twin package: 3, 6, or 12 months"
+    },
+    "credits_charged": {
+      "type": "number",
+      "description": "Credits deducted for this twin package"
+    },
+    "usd_value": {
+      "type": "number",
+      "description": "USD value charged for this package"
+    },
+    "revenue_share_percent": {
+      "type": "number",
+      "default": 20,
+      "description": "Additional % GLIMR takes from twin session revenue (on top of normal 20% platform fee)"
+    },
+    "activated_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the twin was activated"
+    },
+    "expires_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the twin package expires"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "pending",
+        "active",
+        "expired",
+        "failed"
+      ],
+      "default": "pending",
+      "description": "Overall twin subscription status"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Optional description or notes"
+    }
+  },
+  "required": [
+    "companion_id",
+    "image_url",
+    "package_months",
+    "credits_charged"
+  ],
+  "rls": {
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

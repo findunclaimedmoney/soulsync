@@ -1,0 +1,66 @@
+{
+  "name": "SessionLog",
+  "type": "object",
+  "properties": {
+    "duration_minutes": {
+      "type": "number",
+      "description": "Session length purchased (15, 30, or 60)"
+    },
+    "anam_cost": {
+      "type": "number",
+      "description": "Actual Anam API cost for this session (duration \u00d7 $0.12/min)"
+    },
+    "revenue": {
+      "type": "number",
+      "description": "What the user paid (cost-plus-margin price)"
+    },
+    "profit": {
+      "type": "number",
+      "description": "Revenue minus Anam cost"
+    },
+    "companion_name": {
+      "type": "string",
+      "description": "Which companion the session was with"
+    },
+    "session_type": {
+      "type": "string",
+      "enum": [
+        "intimacy",
+        "standard"
+      ],
+      "default": "intimacy",
+      "description": "Whether this was an intimacy session or standard video"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Optional description or notes"
+    }
+  },
+  "required": [
+    "duration_minutes",
+    "anam_cost",
+    "revenue",
+    "profit"
+  ],
+  "rls": {
+    "create": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "read": {
+      "created_by_id": "{{user.id}}"
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "name": "Intimacy Training Progression",
+  "description": "Tracks the avatar's intimacy training progression as users spend video time with their companion. Notifies the user each time they cross into a new stage, and sends a special 'ready' notification when they reach 160 minutes.",
+  "trigger": {
+    "config": {
+      "trigger_type": "entity",
+      "entity_name": "Subscription",
+      "events": [
+        "update"
+      ]
+    },
+    "condition": "${ .trigger.changed_fields | index(\"video_minutes_used\") != null }"
+  },
+  "definition": {
+    "document": {
+      "dsl": "1.0.0",
+      "name": "intimacy_training_progression",
+      "version": "1.0",
+      "namespace": "base44"
+    },
+    "do": [
+      {
+        "check_training": {
+          "call": "invoke_backend_function",
+          "with": {
+            "function_name": "checkIntimacyTraining",
+            "args": {
+              "subscription_id": "${ .trigger.entity_id }",
+              "video_minutes_used": "${ .trigger.data.video_minutes_used }",
+              "stored_stage": "${ .trigger.data.intimacy_training_stage }",
+              "intimacy_package": "${ .trigger.data.intimacy_package }",
+              "intimacy_sessions_completed": "${ .trigger.data.intimacy_sessions_completed }",
+              "user_id": "${ .trigger.data.created_by_id }"
+            }
+          },
+          "then": "end",
+          "x-base44": {
+            "title": "Check intimacy training stage",
+            "description": "Evaluate progression and notify"
+          }
+        }
+      }
+    ]
+  }
+}

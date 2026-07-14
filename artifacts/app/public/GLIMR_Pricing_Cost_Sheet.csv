@@ -1,0 +1,27 @@
+Category,Item,Duration/Quantity,Your Cost (USD),User Price (USD),Profit (USD),Notes
+Text Chat,Companion reply (InvokeLLM),Per message,0.017,,~0.015-0.02 per call
+Text Chat,Memory extraction (InvokeLLM),After each reply,0.0075,,~0.005-0.01 per call
+Text Chat,Photo decision (InvokeLLM),After each reply,0.0075,,~0.005-0.01 per call
+Text Chat,Image generation (GenerateImage),~10-20% of replies,1 credit,,1 integration credit per image
+Text Chat,Proactive check-in (InvokeLLM),Per stale companion,0.015,,~0.01-0.02 scheduled
+Text Chat,Approx total per 100 messages,100 messages,1.70,,Measured - excludes image credits
+Voice,Voice/TTS (GenerateSpeech),Per 50 chars,1 credit,,Max 100 credits/call; ~100 word reply = ~10 credits
+Video - Anam,10 min session,10 min,1.20,4.00,2.80,$0.12/min Anam cost
+Video - Anam,15 min session,15 min,1.80,4.00,2.20,$0.12/min Anam cost
+Video - Anam,30 min session,30 min,3.60,8.00,4.40,$0.12/min Anam cost
+Video - Anam,60 min session,60 min,7.20,15.00,7.80,$0.12/min Anam cost
+Video - LiveAvatar,LiveAvatar session,Per min,,,,Check LiveAvatar dashboard for rate
+Other,Welcome email (SendEmail),Per new user,,,,
+Other,Low-balance email (SendEmail),When credit < $4,,,,
+Other,Photo upload (UploadFile),Per user photo,,,,
+Other,Custom avatar creation (createLiveAvatar),Per custom companion,,,,
+Subscription,Free tier,$0/mo,,0.00,,10 messages/mo text only
+Subscription,Plus tier,$29/mo,,29.00,,80 min video voice replies all companions
+Subscription,Pro tier,$49/mo,,49.00,,160 min video intimacy included outfits diary
+Subscription,VIP tier,$299/mo,,299.00,,500 min video twin/clone holographic device
+Credit Top-Up,Small pack,,5.00,,
+Credit Top-Up,Popular pack,,10.00,,
+Credit Top-Up,Medium pack,,25.00,,
+Credit Top-Up,Large pack,,50.00,,
+Payment Methods,Stripe,,,,Card payments
+Payment Methods,Crypto (USDC/BTC/ETH),,,,Via Kraken

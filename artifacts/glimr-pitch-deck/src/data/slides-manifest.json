@@ -1,0 +1,50 @@
+[
+  {
+    "id": "a3f2e1d0-b4c5-4e6f-8a9b-0c1d2e3f4a5b",
+    "position": 1,
+    "filepath": "src/pages/slides/Slide1Hero.tsx",
+    "title": "GLIMR",
+    "description": "Hero slide — brand statement and tagline",
+    "speakerNotes": ""
+  },
+  {
+    "id": "b4e3f2c1-d5a6-4b7c-9d0e-1f2a3b4c5d6e",
+    "position": 2,
+    "filepath": "src/pages/slides/Slide2Problem.tsx",
+    "title": "Human connection has never been harder",
+    "description": "Problem slide — the loneliness and disconnection people feel",
+    "speakerNotes": ""
+  },
+  {
+    "id": "c5f4a3b2-e6d7-4c8b-0e1f-2a3b4c5d6e7f",
+    "position": 3,
+    "filepath": "src/pages/slides/Slide3Companions.tsx",
+    "title": "Meet your companions",
+    "description": "Product slide — five companion portraits with names and taglines",
+    "speakerNotes": ""
+  },
+  {
+    "id": "d6a5b4c3-f7e8-4d9c-1f2a-3b4c5d6e7f8a",
+    "position": 4,
+    "filepath": "src/pages/slides/Slide4Features.tsx",
+    "title": "Every way to connect",
+    "description": "Features slide — Text, Voice, Live Video, Memory",
+    "speakerNotes": ""
+  },
+  {
+    "id": "e7b6c5d4-a8f9-4e0d-2a3b-4c5d6e7f8a9b",
+    "position": 5,
+    "filepath": "src/pages/slides/Slide5Pricing.tsx",
+    "title": "Simple, transparent pricing",
+    "description": "Pricing slide — Free, Plus (A$59), Pro (A$99) tiers",
+    "speakerNotes": ""
+  },
+  {
+    "id": "f8c7d6e5-b9a0-4f1e-3b4c-5d6e7f8a9b0c",
+    "position": 6,
+    "filepath": "src/pages/slides/Slide6Cta.tsx",
+    "title": "Your companion is waiting",
+    "description": "Closing CTA slide — start free invitation",
+    "speakerNotes": ""
+  }
+]

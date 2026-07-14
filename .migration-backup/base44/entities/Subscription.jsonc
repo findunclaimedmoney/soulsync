@@ -1,0 +1,156 @@
+{
+  "name": "Subscription",
+  "type": "object",
+  "properties": {
+    "tier": {
+      "type": "string",
+      "enum": [
+        "free",
+        "plus",
+        "pro",
+        "vip"
+      ],
+      "default": "free",
+      "description": "The user's subscription tier"
+    },
+    "monthly_credits": {
+      "type": "number",
+      "default": 0,
+      "description": "Credits granted per billing period for this tier (0=free, 12=plus, 18=pro, 70=vip)"
+    },
+    "credits_used": {
+      "type": "number",
+      "default": 0,
+      "description": "Credits consumed this billing period (resets on renewal)"
+    },
+    "credit_balance": {
+      "type": "number",
+      "default": 0,
+      "description": "Available credit balance (monthly allowance + top-ups - consumed)"
+    },
+    "video_minutes_used": {
+      "type": "number",
+      "default": 0,
+      "description": "Video minutes consumed this billing period"
+    },
+    "video_minutes_limit": {
+      "type": "number",
+      "default": 0,
+      "description": "Max video minutes for this tier per month"
+    },
+    "intimacy_sessions_completed": {
+      "type": "number",
+      "default": 0,
+      "description": "Total completed intimacy sessions"
+    },
+    "intimacy_package": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether intimacy is included in the user's tier (pro/vip)"
+    },
+    "intimacy_training_stage": {
+      "type": "number",
+      "default": 0,
+      "description": "Current intimacy training progression stage (0=First Glances, 1=Finding Rhythm, 2=Opening Up, 3=Deepening Bond, 4=Ready)"
+    },
+    "twin_enabled": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the Twin/Clone companion feature is available"
+    },
+    "stripe_customer_id": {
+      "type": "string",
+      "description": "Stripe customer ID"
+    },
+    "stripe_subscription_id": {
+      "type": "string",
+      "description": "Stripe subscription ID"
+    },
+    "current_period_end": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the current billing period ends"
+    },
+    "daily_messages_used": {
+      "type": "number",
+      "default": 0,
+      "description": "Messages sent this billing period (resets monthly)"
+    },
+    "daily_message_date": {
+      "type": "string",
+      "format": "date",
+      "description": "Legacy field, no longer used for monthly counter"
+    },
+    "device_fingerprint": {
+      "type": "string",
+      "description": "Browser device fingerprint to prevent duplicate free accounts"
+    },
+    "signup_ip": {
+      "type": "string",
+      "description": "IP address at signup to prevent duplicate free accounts"
+    },
+    "low_credit_notified": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether the user has already been emailed about their low credit balance this cycle (reset to false when balance recovers above threshold)"
+    },
+    "owner_user_id": {
+      "type": "string",
+      "description": "User ID this subscription belongs to (used when granted by admin/service role)"
+    },
+    "processed_session_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "default": [],
+      "description": "Stripe checkout session IDs already processed (prevents double-crediting between webhook and client redirect)"
+    },
+    "free_voice_messages": {
+      "type": "number",
+      "default": 0,
+      "description": "Free voice messages granted (e.g. 10 from landing page CTA)"
+    },
+    "free_voice_messages_used": {
+      "type": "number",
+      "default": 0,
+      "description": "Free voice messages consumed so far"
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 1000,
+      "description": "Optional description or notes"
+    }
+  },
+  "required": [],
+  "rls": {
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "data.owner_user_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "user_condition": {
+        "role": "admin"
+      }
+    },
+    "delete": {
+      "user_condition": {
+        "role": "admin"
+      }
+    }
+  }
+}

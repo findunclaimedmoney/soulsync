@@ -1,0 +1,94 @@
+{
+  "name": "CustomCompanion",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name given to the custom companion"
+    },
+    "tagline": {
+      "type": "string",
+      "description": "Short descriptor shown on cards"
+    },
+    "description": {
+      "type": "string",
+      "description": "Longer description of personality"
+    },
+    "image_url": {
+      "type": "string",
+      "description": "URL of the uploaded photo"
+    },
+    "personality": {
+      "type": "string",
+      "description": "System prompt describing how the companion should behave"
+    },
+    "voice_id": {
+      "type": "string",
+      "description": "ElevenLabs voice ID for voice replies"
+    },
+    "voice_name": {
+      "type": "string",
+      "description": "Display name of the selected voice"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "draft",
+        "ready"
+      ],
+      "default": "ready",
+      "description": "draft = still being set up; ready = available to chat"
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "liveavatar"
+      ],
+      "default": "liveavatar",
+      "description": "Which video engine powers this companion (LiveAvatar by-image pipeline)"
+    },
+    "avatar_id": {
+      "type": "string",
+      "description": "LiveAvatar avatar ID once the By Image processing is complete"
+    },
+    "avatar_status": {
+      "type": "string",
+      "enum": [
+        "pending_payment",
+        "processing",
+        "active",
+        "failed"
+      ],
+      "default": "processing",
+      "description": "Status of the custom LiveAvatar image avatar creation: pending_payment (awaiting creation fee), processing (up to 24hrs), active (ready for video), failed"
+    }
+  },
+  "required": [
+    "name",
+    "image_url",
+    "personality"
+  ],
+  "rls": {
+    "create": {
+      "created_by_id": "{{user.id}}"
+    },
+    "read": {
+      "$or": [
+        {
+          "created_by_id": "{{user.id}}"
+        },
+        {
+          "user_condition": {
+            "role": "admin"
+          }
+        }
+      ]
+    },
+    "update": {
+      "created_by_id": "{{user.id}}"
+    },
+    "delete": {
+      "created_by_id": "{{user.id}}"
+    }
+  }
+}

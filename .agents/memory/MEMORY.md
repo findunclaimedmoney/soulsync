@@ -1,0 +1,1 @@
+- [Base44 migration pattern](base44-migration.md) — generic JSONB entity table + compatibility shim replaces base44.entities/auth/integrations without rewriting 40+ pages
