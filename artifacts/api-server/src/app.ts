@@ -66,7 +66,7 @@ app.use(express.static(path.join(__dirname, "../../app/dist/public")));
 app.use("/api", router);
 
 // Catch-all: serve index.html for any non-API route (SPA routing)
-app.get("*", (req, res) => {
+app.get("/{*path}", (req, res) => {
   res.sendFile(path.join(__dirname, "../../app/dist/public/index.html"));
 });
 
