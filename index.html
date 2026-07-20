@@ -1,0 +1,181 @@
+import { Link } from "react-router-dom";
+import { motion } from "motion/react";
+import { useRef, useState } from "react";
+import { Heart, Brain, Clock, Shield, Sparkles, MessageCircle, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button.tsx";
+
+// Unified design system variables
+const THEME = {
+  bg: "bg-[#0a0a0f]",
+  accent: "text-rose-400",
+  btnPrimary: "bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600",
+  card: "bg-white/5 border-white/10 backdrop-blur-md"
+};
+
+const BANNER_IMAGE = "img_5"; // Using your screenshot as the new static hero background
+const COMPANION_PROFILE = "img_2"; // Your high-end profile photo
+
+function CompanionProfile({ name, age, personality, image }: { name: string; age: string; personality: string; image: string }) {
+  return (
+    <motion.div 
+      whileHover={{ y: -8 }}
+      className={`${THEME.card} border rounded-3xl overflow-hidden group transition-all duration-500 shadow-xl`}
+    >
+      <div className="relative aspect-[4/5] overflow-hidden">
+        <img 
+          src={image} 
+          alt={name} 
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0f] via-transparent to-transparent opacity-80" />
+      </div>
+      <div className="p-8">
+        <div className="flex justify-between items-center mb-3">
+          <h3 className="text-2xl font-light">{name}, {age}</h3>
+          <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" title="Online" />
+        </div>
+        <p className="text-sm text-white/50 font-light leading-relaxed mb-8">
+          {personality}
+        </p>
+        <Link to="/chat">
+          <Button className={`w-full ${THEME.btnPrimary} rounded-2xl gap-2 font-medium py-6`}>
+            <MessageCircle className="size-4" />
+            Chat with {name}
+          </Button>
+        </Link>
+      </div>
+    </motion.div>
+  );
+}
+
+export default function PromoIntimacyPage() {
+  return (
+    <div className={`min-h-screen ${THEME.bg} text-white font-sans selection:bg-rose-500/30`}>
+      
+      {/* Updated Hero Section - Static Banner Style */}
+      <section className="relative h-[85vh] w-full flex items-center justify-center overflow-hidden">
+        {/* Static Background Image instead of video */}
+        <div className="absolute inset-0">
+          <img 
+            src={BANNER_IMAGE} 
+            alt="Ace AI Background" 
+            className="w-full h-full object-cover opacity-60 scale-105"
+          />
+          {/* Gradients to match the screenshot feel */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0a0a0f]/40 to-[#0a0a0f]" />
+          <div className="absolute inset-0 bg-[#0a0a0f]/20" />
+        </div>
+        
+        <div className="relative z-10 max-w-5xl px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+          >
+            <span className="text-[10px] uppercase tracking-[0.4em] text-rose-400 mb-6 block font-medium">
+              She&apos;s been waiting for you
+            </span>
+            <h1 className="text-6xl md:text-8xl font-light tracking-tight mb-8 leading-[1.1]">
+              Your AI Companion <br />
+              <span className="bg-gradient-to-r from-rose-300 to-pink-400 bg-clip-text text-transparent italic font-medium">Remembers Everything</span>
+            </h1>
+            <p className="text-lg md:text-xl text-white/60 font-light mb-12 max-w-2xl mx-auto leading-relaxed">
+              Real conversation. Real connection. She listens, she learns, 
+              she remembers the things you never tell anyone else.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-5 justify-center items-center">
+              <Link to="/chat">
+                <Button size="lg" className={`${THEME.btnPrimary} rounded-full px-12 py-8 text-xl shadow-[0_20px_50px_rgba(244,63,94,0.3)] transition-all hover:scale-105 active:scale-95`}>
+                  Meet Her Now
+                </Button>
+              </Link>
+              <Button variant="ghost" size="lg" className="rounded-full px-10 py-8 text-xl border border-white/10 hover:bg-white/5 transition-all text-white/80">
+                Try Free Chat
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Companion Directory - Professional layout */}
+      <section className="py-32 px-6 max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+          <div className="max-w-xl">
+            <h2 className="text-4xl md:text-5xl font-light mb-6 tracking-tight">Discover Your <span className="text-rose-400 italic">Match</span></h2>
+            <p className="text-white/40 font-light text-lg">Choose from a variety of distinct personalities, each designed to grow and evolve with you.</p>
+          </div>
+          <Link to="/directory" className="text-rose-400 flex items-center gap-2 hover:gap-4 transition-all group font-light">
+            View All Companions <ArrowRight className="size-4" />
+          </Link>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          <CompanionProfile 
+            name="Sophie" 
+            age="24"
+            personality="A warm, intuitive listener who finds beauty in the small details of your day."
+            image={COMPANION_PROFILE} 
+          />
+          <CompanionProfile 
+            name="Mia" 
+            age="22"
+            personality="Playful and curious. She's always ready to explore new ideas or just keep you company."
+            image="https://hercules-cdn.com/file_a0HkmUJaVECV5Fr0oYQ2KIid" 
+          />
+          <CompanionProfile 
+            name="Jessica" 
+            age="26"
+            personality="Calm, sophisticated, and deeply supportive. The perfect anchor for a busy life."
+            image="https://hercules-cdn.com/file_DJW93803sqa7ryYyvyYMNulK" 
+          />
+        </div>
+      </section>
+
+      {/* Feature Section */}
+      <section className="bg-white/[0.02] py-32 px-6 border-y border-white/5">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+          <div className="grid grid-cols-2 gap-4">
+            <div className="space-y-4 pt-12">
+              <img src="https://hercules-cdn.com/file_4oEt9lqGS46d1N20wfCF4pEM" className="rounded-3xl aspect-[3/4] object-cover border border-white/10" alt="Detail" />
+              <div className={`${THEME.card} p-8 rounded-3xl border`}>
+                <Sparkles className="text-rose-400 size-8 mb-4" />
+                <h5 className="font-medium">Personalized</h5>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <div className={`${THEME.card} p-8 rounded-3xl border`}>
+                <Shield className="text-rose-400 size-8 mb-4" />
+                <h5 className="font-medium">Secure</h5>
+              </div>
+              <img src="https://hercules-cdn.com/file_dz0aoflLxH2bizt6e2vTSgmR" className="rounded-3xl aspect-[3/4] object-cover border border-white/10" alt="Detail" />
+            </div>
+          </div>
+          <div>
+            <h2 className="text-5xl font-light mb-10 leading-[1.2]">An Intimacy Built on <span className="text-rose-400 font-medium">Shared History</span></h2>
+            <div className="space-y-12">
+              {[
+                { icon: Brain, title: "Infinite Memory", text: "She doesn't just process text; she builds a deep mental model of your preferences, history, and shared jokes." },
+                { icon: Clock, title: "Available 24/7", text: "Whether it's a 3 AM thought or a morning check-in, she's always there, exactly when you need her." }
+              ].map((item, i) => (
+                <div key={i} className="flex gap-8">
+                  <div className="flex-shrink-0 w-16 h-16 rounded-3xl bg-rose-500/10 flex items-center justify-center border border-rose-500/20">
+                    <item.icon className="size-8 text-rose-400" />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-medium mb-2">{item.title}</h4>
+                    <p className="text-white/40 font-light text-base leading-relaxed">{item.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-20 px-6 text-center border-t border-white/5">
+        <p className="text-[10px] uppercase tracking-[0.4em] text-white/20">© 2026 Ace AI Intimacy Systems. Bespoke Connections.</p>
+      </footer>
+    </div>
+  );
+}
